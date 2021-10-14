@@ -1,10 +1,11 @@
 package sample.capture;
+
+import org.epcis.client.EPCISCaptureClient;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.epcis.client.EPCISCaptureClient;
 
 public class UseStringForm {
 
@@ -43,44 +44,43 @@ public class UseStringForm {
 		String body = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + "<!DOCTYPE project>\r\n"
 				+ "<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:2\"\r\n"
 				+ " xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" creationDate=\"2020-10-11T11:30:47.0Z\" schemaVersion=\"2.0\">\r\n"
-				+ "    <EPCISBody>\r\n" 
+				+ "    <EPCISBody>\r\n"
 				+ "        <EventList>\r\n"
-				+ "            <ObjectEvent>\r\n" 
-				+ "                <eventTime>" + eventTime+ "</eventTime>\r\n" 
-				+ "                <eventTimeZoneOffset>" + eventTimeZoneOffset+ "</eventTimeZoneOffset>\r\n" 
-				+ "                <eventID>" + eventId+ "</eventID>\r\n" 
-				+ "                <epcList>\r\n" 
-				+ "                    <epc>"+ epcs.get(0) + "</epc>\r\n" 
-				+ "                    <epc>" + epcs.get(1)+ "</epc>\r\n" 
-				+ "                </epcList>\r\n" + 
-				"                <action>"+ actionType + "</action>\r\n" 
-				+ "                <bizStep>" + bizStep+ "</bizStep>\r\n" 
-				+ "                <disposition>" + disposition+ "</disposition>\r\n" 
+				+ "            <ObjectEvent>\r\n"
+				+ "                <eventTime>" + eventTime + "</eventTime>\r\n"
+				+ "                <eventTimeZoneOffset>" + eventTimeZoneOffset + "</eventTimeZoneOffset>\r\n"
+				+ "                <eventID>" + eventId + "</eventID>\r\n"
+				+ "                <epcList>\r\n"
+				+ "                    <epc>" + epcs.get(0) + "</epc>\r\n"
+				+ "                    <epc>" + epcs.get(1) + "</epc>\r\n"
+				+ "                </epcList>\r\n" +
+				"                <action>" + actionType + "</action>\r\n"
+				+ "                <bizStep>" + bizStep + "</bizStep>\r\n"
+				+ "                <disposition>" + disposition + "</disposition>\r\n"
 				+ "                <readPoint>\r\n"
 				+ "                    <id>" + readPoint + "</id>\r\n"
-				+ "                </readPoint>\r\n" 
+				+ "                </readPoint>\r\n"
 				+ "                <bizLocation>\r\n"
 				+ "                    <id>" + bizLocation + "</id>\r\n"
-				+ "                </bizLocation>\r\n" 
+				+ "                </bizLocation>\r\n"
 				+ "                <bizTransactionList>\r\n"
-				+ "						<bizTransaction type=\"" + bizTransactionKey.get(0) + "\">"+bizTransactionMap.get(bizTransactionKey.get(0)) + "</bizTransaction>\r\n"
-				+ "						<bizTransaction type=\"" + bizTransactionKey.get(1) + "\">"+ bizTransactionMap.get(bizTransactionKey.get(1)) + "</bizTransaction>\r\n"
-				+ "                </bizTransactionList>\r\n" 
+				+ "						<bizTransaction type=\"" + bizTransactionKey.get(0) + "\">" + bizTransactionMap.get(bizTransactionKey.get(0)) + "</bizTransaction>\r\n"
+				+ "						<bizTransaction type=\"" + bizTransactionKey.get(1) + "\">" + bizTransactionMap.get(bizTransactionKey.get(1)) + "</bizTransaction>\r\n"
+				+ "                </bizTransactionList>\r\n"
 				+ "                <sourceList>\r\n"
-				+ "                    <source type=\"" + sourceMapKey.get(0) + "\">"+ sourceMap.get(sourceMapKey.get(0)) + "</source>\r\n"
-				+ "                </sourceList>\r\n" 
+				+ "                    <source type=\"" + sourceMapKey.get(0) + "\">" + sourceMap.get(sourceMapKey.get(0)) + "</source>\r\n"
+				+ "                </sourceList>\r\n"
 				+ "                <destinationList>\r\n"
-				+ "                    <destination type=\"" + destinationMapKey.get(0) + "\">"+ destinationMap.get(destinationMapKey.get(0)) + "</destination>\r\n"
-				+ "                </destinationList>\r\n" 
+				+ "                    <destination type=\"" + destinationMapKey.get(0) + "\">" + destinationMap.get(destinationMapKey.get(0)) + "</destination>\r\n"
+				+ "                </destinationList>\r\n"
 				+ "            </ObjectEvent>\r\n"
-				+ "        </EventList>\r\n" 
-				+ "    </EPCISBody>\r\n" 
+				+ "        </EventList>\r\n"
+				+ "    </EPCISBody>\r\n"
 				+ "</epcis:EPCISDocument>";
 
-		Boolean byJson = false; // send xml string
 		EPCISCaptureClient client = new EPCISCaptureClient(
 				"http://dfpl.sejong.ac.kr:8080/epcis/capture");
-		client.sendEPCISDocumentByString(byJson, body); // HTTP Request Method 
+		client.sendByString(body, false); // HTTP Request Method
 	}
 
 }

@@ -1,0 +1,8 @@
+1. dom.document 형태로 반환이 가능하게함 (단순 Builder의 역할) O
+2. 필수 필드에 대해서만 Builder 기능 제공
+3. 이외의 필드에 대한 입력을 위해 1과 같이 변경 O
+4. Sender 역할을 위해 Document를 인자로 받아 post 보내는 함수 추가 O
+5. Extension Field 관련 삭제
+6. 기 설계된 배송로봇 이벤트 및 마스터 데이터만 호환 가능하도록 DownGrad (Object,Transaction,Voca)
+UseClientForm sample 변경
+
