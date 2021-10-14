@@ -1,18 +1,5 @@
-1. dom.document 형태로 반환이 가능하게함 (단순 Builder의 역할) O
-2. 기 설계된 필드 이외의 필드에 대한 입력을 위해 1과 같이 변경 O
-3. Sender 역할을 위해 Document를 인자로 받아 post 보내는 함수 추가 O
-4. Extension Field 기능은 그대로 유지 (기 설계된 이벤트를 호환하기 위해서)
-5. 기 설계된 배송로봇 이벤트 및 마스터 데이터만 호환 가능하도록 DownGrade (Object,Transaction,Voca)
 UseClientForm sample 변경
 
-
-
-
-
-
 정리
-Builder 로써의 역할 : 기 설계된 이벤트 혹은 마스터 데이터를 Building 할 수 있도록 지원
-Sender 로써의 역할 : Builder를 통해 만들어진 Document에 대한 Sending 지원, Builder 사용 이외의 Document에 대해 String 형식 혹은 dom.document 형식으로도 Sending 할 수 있도록 지원
-
-각 이벤트 별 필수 필드만 지원하는 것을 안하는 이유(대부분의 필드가 optional 이므로 - 공식문서)
-
+Builder로써의 역할은 제외
+Sender로써, EPCISDocumentType과 JSON을 인자로 받아서 sending 해주는 역할만 수행
