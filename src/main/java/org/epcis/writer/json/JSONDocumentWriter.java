@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JSONDocumentWriter {
-    public static Document write(EPCISDocumentType epcisDoc) {
+    public static Document write(EPCISDocumentType epcisDoc, List<Object> events,
+                                 List<VocabularyType> vocabularies) {
         Document json = new Document();
         json.put("isA", "EPCISDocument");
         json.put("schemaVersion", epcisDoc.getSchemaVersion().toString());
@@ -18,7 +19,6 @@ public class JSONDocumentWriter {
 
         json.put("@context", context);
         // event
-        List<Object> events = epcisDoc.getEPCISBody().getEventList().getObjectEventOrAggregationEventOrTransformationEvent();
         ArrayList<Document> eventList = new ArrayList<Document>();
         events.forEach(event -> {
             try {
@@ -45,9 +45,8 @@ public class JSONDocumentWriter {
         epcisBodyJson.put("eventList", eventList);
         json.put("epcisBody", epcisBodyJson);
         // voca
-        List<VocabularyType> vocas = epcisDoc.getEPCISHeader().getExtension().getEPCISMasterData().getVocabularyList().getVocabulary();
         List<Document> vocaList = new ArrayList<>();
-        vocas.forEach(voca -> {
+        vocabularies.forEach(voca -> {
             vocaList.add(MasterDataWriter.write(voca));
         });
         Document epcisHeaderJson = new Document();
