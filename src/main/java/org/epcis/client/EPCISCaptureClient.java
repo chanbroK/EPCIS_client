@@ -25,20 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-// TODO: Make Sample
-// TODO: solve related problem <- downgrade
 public class EPCISCaptureClient {
-    // Step 1: just create EPCISCaptureClient with url and document and send
-    // Step 2: enable to add an individual event as well as vocabulary. At this
-    // moment, very detailed validation will be conducted by validater
-    // I put validateAggregationEvent. Other events and vocabulary are same
-    // Step 3: epcisDocument to XML string is straightforward
-    // to Json is difficult. Good Luck!
-    // Step 4: fluent style event as well as vocabulary builder
-    // please focus on convenient aspect and cover whole data building
-    // TODO : name space simplify --> Root to Leaf clearNamespace
-    // TODO : pojo to json
-    // TODO : sensorData -> SensorElementBuilder 만들기
     public static UnitConverter unitConverter;
     public static List<String> namespaceMap;
     public URL captureEndpoint;
